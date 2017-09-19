@@ -1,45 +1,17 @@
 package be.pxl.computerstore.hardware;
 
+import java.util.Random;
+
 import be.pxl.computerstore.util.Dimension;
 
-public class ComputerCase {
+public class ComputerCase extends Product {
 	
-	private String vendor;
-	private String name;
-	private double price;
 	private Dimension dimension;
 	private double weight;
 	
 	public ComputerCase(String vendor, String name, double price) {
-		setVendor(vendor);
-		setName(name);
-		setPrice(price);
-		
+		super(vendor, name, price);		
 		}
-
-	public String getVendor() {
-		return vendor;
-	}
-
-	public void setVendor(String vendor) {
-		this.vendor = vendor;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
 
 	public Dimension getDimension() {
 		return dimension;
@@ -57,4 +29,11 @@ public class ComputerCase {
 		this.weight = weight;
 	}
 
+	
+	@Override
+	public String toString(){
+		return super.toString() + "Width = " + dimension.getWidth() + "mm" + "height = " + dimension.getHeight() + "mm" + "Depth = " + dimension.getDepth() + "mm" +
+				"Weight = " + weight + "kg";
+		
+	}
 }
