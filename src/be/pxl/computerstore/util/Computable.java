@@ -6,7 +6,7 @@ public interface Computable {
 	double totalPriceExcl();
 	
 	default double totalPriceIncl() {
-		return totalPriceExcl() * ((100 + BTW) / 100);
+		return (totalPriceExcl() * ((100 + BTW) / 100));
 	}
 	
 }

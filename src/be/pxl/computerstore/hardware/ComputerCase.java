@@ -1,7 +1,5 @@
 package be.pxl.computerstore.hardware;
 
-import java.util.Random;
-
 import be.pxl.computerstore.util.Dimension;
 
 public class ComputerCase extends Product {
@@ -32,7 +30,7 @@ public class ComputerCase extends Product {
 	
 	@Override
 	public String toString(){
-		return super.toString() + "Width = " + dimension.getWidth() + "mm" + "height = " + dimension.getHeight() + "mm" + "Depth = " + dimension.getDepth() + "mm" +
+		return super.toString() + "Width = " + dimension.getWidth() + "mm" + "Height = " + dimension.getHeight() + "mm" + "Depth = " + dimension.getDepth() + "mm" +
 				"Weight = " + weight + "kg";
 		
 	}

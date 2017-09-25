@@ -59,7 +59,7 @@ public class Product {
 				artNumber.append("X");
 			}
 		} else {
-			artNumber = new StringBuilder(getVendor().substring(0, 2).toUpperCase());
+			artNumber = new StringBuilder(getVendor().substring(0, 3).toUpperCase());
 		}
 		artNumber.append("-");
 		artNumber.append(String.format("%05d", Product.uniqueNumber));
@@ -73,7 +73,7 @@ public class Product {
 	
 	@Override
 	public String toString() {
-		StringBuilder product = new StringBuilder("ArticleNumber = " + articleNumber + "vendor = " + vendor + "\nName = " + name + "\nPrice = " + price);
+		StringBuilder product = new StringBuilder("ArticleNumber = " + articleNumber + "Vendor = " + vendor + "\nName = " + name + "\nPrice = " + price);
 		return product.toString();
 	}
 	

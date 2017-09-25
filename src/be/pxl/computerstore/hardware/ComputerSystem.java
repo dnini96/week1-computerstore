@@ -1,12 +1,14 @@
 package be.pxl.computerstore.hardware;
 
 import be.pxl.computerstore.util.Computable;
+import be.pxl.computerstore.util.TooManyPeripheralsException;
 
 public class ComputerSystem implements Computable {
 
+	public static final int MAX_PERIPHERAL = 3;
 	private Processor processor;
 	private ComputerCase computerCase;
-	private Peripheral[] peripherals = new Peripheral[3];
+	private Peripheral[] peripherals = new Peripheral[MAX_PERIPHERAL];
 	private int peripheralCounter = 0;
 	
 	public ComputerSystem() {
@@ -41,10 +43,26 @@ public class ComputerSystem implements Computable {
 	
 	public void removePeripheral(String articleNumber) {
 		for(int i = 0; i < peripherals.length; i++) {
-			if(peripherals[i].getArticleNumber().equals(articleNumber)) {
-				peripherals[i] = null;
-				peripheralCounter -= 1;
+			try{
+				if(!peripherals[i].equals(null)) {
+					if(peripherals[i].getArticleNumber().equals(articleNumber)) {
+						peripherals[i] = null;
+						peripheralCounter -= 1;
+						i = 10;
+					}
 			}
+			}catch(NullPointerException ex) {
+				
+					if(peripheralCounter == 0) {
+						
+					}else {
+						peripheralCounter -= 1;
+					}
+					
+					i = 10;
+				
+			}
+		
 		}
 	}
 	
@@ -68,7 +86,7 @@ public class ComputerSystem implements Computable {
 	@Override
 	public double totalPriceExcl() {
 		double peripheralPrice = 0;
-		for(int i = 0; i < peripherals.length; i++) {
+		for(int i = 0; i < peripheralCounter; i++) {
 			peripheralPrice += peripherals[i].getPrice();
 		}
 		double totalPrice = processor.getPrice() + computerCase.getPrice() + peripheralPrice;	
